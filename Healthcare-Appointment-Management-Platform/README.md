@@ -1,1 +1,0 @@
-# Healthcare-Appointment-Management-Platform
