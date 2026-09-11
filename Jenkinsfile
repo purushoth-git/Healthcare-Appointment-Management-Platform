@@ -12,7 +12,7 @@ pipeline {
 
         IMAGE_TAG = "${BUILD_NUMBER}"
 
-        APP_SERVER = "YOUR_APPLICATION_SERVER_PUBLIC_IP"
+        APP_SERVER = "13.201.25.178"
     }
 
     stages {
@@ -86,7 +86,7 @@ pipeline {
 
                     sh '''
                         echo "$DOCKER_PASSWORD" | docker login \
-                            -u "$DOCKER_USER" \
+                            --username "$DOCKER_USER" \
                             --password-stdin
 
                         docker push "$FRONTEND_IMAGE:$IMAGE_TAG"
@@ -107,7 +107,7 @@ pipeline {
 
             steps {
 
-                sshagent(credentials: ['13.201.25.178']) {
+                sshagent(credentials: ['app-server-ssh']) {
 
                     sh """
                         ssh -o StrictHostKeyChecking=no ubuntu@${APP_SERVER} '
@@ -131,7 +131,7 @@ pipeline {
 
             steps {
 
-                sshagent(credentials: ['13.201.25.178']) {
+                sshagent(credentials: ['app-server-ssh']) {
 
                     sh """
                         ssh -o StrictHostKeyChecking=no ubuntu@${APP_SERVER} '
@@ -162,4 +162,3 @@ pipeline {
         }
     }
 }
-
