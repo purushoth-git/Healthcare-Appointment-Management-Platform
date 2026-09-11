@@ -4,7 +4,7 @@ pipeline {
 
     environment {
 
-        DOCKERHUB_USERNAME = "YOUR_DOCKERHUB_USERNAME"
+        DOCKERHUB_USERNAME = "purushothdoc"
 
         FRONTEND_IMAGE = "${DOCKERHUB_USERNAME}/healthcare-frontend"
         BACKEND_IMAGE  = "${DOCKERHUB_USERNAME}/healthcare-backend"
@@ -79,7 +79,7 @@ pipeline {
                 withCredentials([
                     usernamePassword(
                         credentialsId: 'dockerhub-credentials',
-                        usernameVariable: 'purushothdoc',
+                        usernameVariable: 'DOCKERHUB_USERNAME',
                         passwordVariable: 'DOCKER_PASSWORD'
                     )
                 ]) {
