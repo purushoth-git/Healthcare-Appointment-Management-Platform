@@ -12,7 +12,7 @@ pipeline {
 
         IMAGE_TAG = "${BUILD_NUMBER}"
 
-        APP_SERVER = "13.201.25.178"
+        APP_SERVER = "13.201.0.252"
     }
 
     stages {
